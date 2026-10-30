@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FitDesk — Календарь</title>
+  <script>
+    (function() {
+      const s = JSON.parse(localStorage.getItem("fitSettings"));
+      if (s && s[0]) document.documentElement.classList.add("dark-theme");
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo">FD</div><span class="brand-name">FitDesk</span></div>
+      <nav class="nav">
+        <a class="nav-item" href="index.html">Дашборд</a>
+        <a class="nav-item is-active" href="calendar.html">Календарь</a>
+        <a class="nav-item" href="clients.html">Клиенты</a>
+        <a class="nav-item" href="workout.html">Тренировки</a>
+        <a class="nav-item" href="exercises.html">Упражнения</a>
+        <a class="nav-item" href="settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h2>Календарь тренера</h2>
+        <div class="topbar-right">
+          <button class="btn btn-primary" id="addSessionBtn">+ Добавить сессию</button>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="card">
+          <div class="card-head">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <button class="btn" id="prevMonthBtn" style="padding: 6px 12px;">&larr;</button>
+              <h2 id="calendarMonthTitle" style="min-width: 150px; text-align: center;">Октябрь 2026</h2>
+              <button class="btn" id="nextMonthBtn" style="padding: 6px 12px;">&rarr;</button>
+            </div>
+            
+            <div class="seg" id="viewToggle">
+              <button class="seg-btn is-active" data-view="month">Месяц</button>
+              <button class="seg-btn" data-view="week">Неделя</button>
+            </div>
+          </div>
+          <div id="calendarContainer"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ИСПРАВЛЕНО: правильный путь -->
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/calendar.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

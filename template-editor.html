@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FitDesk — Редактор шаблона</title>
+  <script>
+    (function() {
+      const s = JSON.parse(localStorage.getItem("fitSettings"));
+      if (s && s[0]) document.documentElement.classList.add("dark-theme");
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo">FD</div><span class="brand-name">FitDesk</span></div>
+      <nav class="nav">
+        <a class="nav-item" href="index.html">Дашборд</a>
+        <a class="nav-item" href="calendar.html">Календарь</a>
+        <a class="nav-item" href="clients.html">Клиенты</a>
+        <a class="nav-item" href="workout.html">Тренировки</a>
+        <a class="nav-item is-active" href="exercises.html">База</a>
+        <a class="nav-item" href="settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="breadcrumbs">База / Шаблоны / <span id="breadcrumbTitle">Редактирование</span></div>
+        <div class="topbar-right">
+          <button class="btn btn-primary" id="saveTemplateBtn">Сохранить шаблон</button>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="page-head">
+          <h1 id="templateTitle">Загрузка...</h1>
+          <p class="muted" id="templateDesc">Описание шаблона</p>
+        </div>
+
+        <div class="grid grid-12">
+          <div class="span-8">
+            <div id="exerciseList"></div>
+            <button class="btn btn-primary" id="addExToTemplateBtn" style="width:100%; margin-top: 8px;">+ Добавить упражнение из базы</button>
+          </div>
+
+          <aside class="span-4">
+            <div class="sticky">
+              <div class="card">
+                <div class="card-head"><h2>Статистика</h2></div>
+                <dl class="summary">
+                  <div><dt>Подходов</dt><dd id="sumSets">0</dd></div>
+                  <div><dt>Упражнений</dt><dd id="sumEx">0</dd></div>
+                </dl>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ИСПРАВЛЕНО: правильный путь -->
+  <script src="../js/data.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/template-editor.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

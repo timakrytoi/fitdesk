@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FitDesk — Клиенты</title>
+  <script>
+    (function() {
+      const s = JSON.parse(localStorage.getItem("fitSettings"));
+      if (s && s[0]) document.documentElement.classList.add("dark-theme");
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo">FD</div><span class="brand-name">FitDesk</span></div>
+      <nav class="nav">
+        <a class="nav-item" href="index.html">Дашборд</a>
+        <a class="nav-item" href="calendar.html">Календарь</a>
+        <a class="nav-item is-active" href="clients.html">Клиенты</a>
+        <a class="nav-item" href="workout.html">Тренировки</a>
+        <a class="nav-item" href="exercises.html">Упражнения</a>
+        <a class="nav-item" href="settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <h2>Мои клиенты</h2>
+        <div class="topbar-right">
+          <button class="btn btn-primary">+ Новый клиент</button>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="card">
+          <div class="card-head">
+            <h2>Список</h2>
+            <input class="input" id="clientPageSearch" placeholder="Поиск клиента..." />
+          </div>
+          <div id="clientsGrid" class="ex-grid"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ИСПРАВЛЕНО: правильный путь -->
+  <script src="../js/ui.js"></script>
+  <script src="../js/data.js"></script>
+  <script src="../js/clients.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

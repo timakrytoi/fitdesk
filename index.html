@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FitDesk — Дашборд тренера</title>
+  <script>
+    (function() {
+      const s = JSON.parse(localStorage.getItem("fitSettings"));
+      if (s && s[0]) document.documentElement.classList.add("dark-theme");
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo">FD</div><span class="brand-name">FitDesk</span></div>
+      <nav class="nav">
+        <a class="nav-item is-active" href="index.html">Дашборд</a>
+        <a class="nav-item" href="calendar.html">Календарь</a>
+        <a class="nav-item" href="clients.html">Клиенты</a>
+        <a class="nav-item" href="workout.html">Тренировки</a>
+        <a class="nav-item" href="exercises.html">Упражнения</a>
+        <a class="nav-item" href="settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="search-wrapper">
+          <input type="text" id="globalSearch" class="input" placeholder="Поиск клиентов, тренировок…" style="width: 100%;" autocomplete="off" />
+          <div id="searchResults" class="search-results"></div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn" id="themeToggle" title="Переключить тему">🌙</button>
+          <button class="icon-btn" aria-label="Уведомления">🔔</button>
+          <div class="avatar">АК</div>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="page-head">
+          <h1>Доброе утро, Алексей</h1>
+          <p class="muted">Сегодня у вас 3 тренировки и 2 непрочитанных заметки.</p>
+        </div>
+
+        <div class="grid grid-12">
+          <div class="card span-8">
+            <div class="card-head">
+              <h2>Календарь недели</h2>
+              <div class="seg">
+                <button class="seg-btn is-active">День</button>
+                <button class="seg-btn">Неделя</button>
+              </div>
+            </div>
+            <div id="calendar" class="calendar"></div>
+          </div>
+
+          <div class="card span-4">
+            <div class="card-head">
+              <h2>Задачи</h2>
+              <button class="btn" id="addTaskBtn" style="padding: 4px 10px; font-size: 16px; line-height: 1;">+</button>
+            </div>
+            <ul class="task-list" id="taskList"></ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head">
+            <h2>Клиенты</h2>
+            <input class="input" id="clientSearch" placeholder="Поиск по имени" />
+          </div>
+          <!-- ИСПРАВЛЕНО: Таблица теперь внутри карточки и обернута для скролла -->
+          <div class="table-wrapper">
+            <table class="table" id="clientsTable">
+              <thead>
+                <tr>
+                  <th>Клиент</th>
+                  <th>Вес</th>
+                  <th>Статус плана</th>
+                  <th>Последняя тренировка</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Последние логи</h2></div>
+          <ul class="log-list" id="logList"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- ИСПРАВЛЕНО: правильный путь к mobile-menu.js -->
+  <script src="../js/data.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>

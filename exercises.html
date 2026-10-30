@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>FitDesk — База упражнений</title>
+  <script>
+    (function() {
+      const s = JSON.parse(localStorage.getItem("fitSettings"));
+      if (s && s[0]) document.documentElement.classList.add("dark-theme");
+    })();
+  </script>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo">FD</div><span class="brand-name">FitDesk</span></div>
+      <nav class="nav">
+        <a class="nav-item" href="index.html">Дашборд</a>
+        <a class="nav-item" href="calendar.html">Календарь</a>
+        <a class="nav-item" href="clients.html">Клиенты</a>
+        <a class="nav-item" href="workout.html">Тренировки</a>
+        <a class="nav-item is-active" href="exercises.html">Упражнения</a>
+        <a class="nav-item" href="settings.html">Настройки</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="tabs" id="exTabs">
+          <button class="tab is-active" data-tab="my">Мои упражнения</button>
+          <button class="tab" data-tab="templates">Шаблоны</button>
+          <button class="tab" data-tab="categories">Категории</button>
+        </div>
+      </header>
+
+      <section class="page">
+        <div class="page-head">
+          <h1>База упражнений</h1>
+          <p class="muted">Группировка по мышечным группам с цветовой кодировкой.</p>
+        </div>
+
+        <div id="tab-my" class="tab-content">
+          <div class="card">
+            <div class="card-head">
+              <h2>Мои упражнения</h2>
+              <div style="display:flex; gap:10px;">
+                <input class="input" id="exSearch" placeholder="Поиск упражнения" />
+                <button class="btn btn-primary" id="addExBtn">+ Добавить</button>
+              </div>
+            </div>
+            <div id="exList" class="ex-grid"></div>
+          </div>
+        </div>
+
+        <div id="tab-templates" class="tab-content" style="display: none;">
+          <div class="card">
+            <div class="card-head">
+              <h2>Шаблоны тренировок</h2>
+              <button class="btn btn-primary" id="addTemplateBtn">+ Новый шаблон</button>
+            </div>
+            <div id="templateList" style="display:flex; flex-direction:column; gap:12px;"></div>
+          </div>
+        </div>
+
+        <div id="tab-categories" class="tab-content" style="display: none;">
+          <div class="card">
+            <div class="card-head">
+              <h2>Категории (мышечные группы)</h2>
+              <button class="btn btn-primary" id="addCategoryBtn">+ Новая категория</button>
+            </div>
+            <div id="catList" style="display:flex; flex-direction:column; gap:10px;"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <!-- ИСПРАВЛЕНО: правильный путь -->
+  <script src="../js/data.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/exercises.js"></script>
+  <script src="../js/mobile-menu.js"></script>
+</body>
+</html>
